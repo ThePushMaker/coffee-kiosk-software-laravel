@@ -27,9 +27,7 @@ class AuthController extends Controller
         return response()->json([
             'token' => $user->createToken('token')->plainTextToken,
             'user' => $user
-        ], 201); 
-        
-        // autenticar al usuario
+        ], 201);
     }
 
     public function login(LoginRequest $request)
@@ -42,6 +40,13 @@ class AuthController extends Controller
                 'errors' => ['El email o la contraseña son incorrectos']
             ], 422);
         }
+        
+        // autenticar al usuario
+        $user = Auth::user();
+        return response()->json([
+            'token' => $user->createToken('token')->plainTextToken,
+            'user' => $user
+        ], 200);
     }
 
     public function logout(Request $request)
