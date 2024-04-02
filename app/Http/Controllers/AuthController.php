@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistroRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -28,9 +29,11 @@ class AuthController extends Controller
         ], 201); 
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        return 'login';
+        $data = $request->validated();
+        
+        
     }
 
     public function logout(Request $request)
