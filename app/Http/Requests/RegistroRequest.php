@@ -33,7 +33,7 @@ class RegistroRequest extends FormRequest
         ];
     }
     
-    public function messages()
+    public function messages(): array
     {
         return [
             'name' => 'El nombre es obligatorio',
