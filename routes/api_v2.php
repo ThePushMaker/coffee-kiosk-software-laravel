@@ -6,13 +6,21 @@ use App\Http\Controllers\ProductoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
 
 Route::apiResource('/categorias', CategoriaController::class);
 Route::apiResource('/productos', ProductoController::class);
 
 // autenticación
-ROute::post('/registro', [AuthController::class, 'register']);
-ROute::post('/login', [AuthController::class, 'login']);
+Route::post('/registro', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
