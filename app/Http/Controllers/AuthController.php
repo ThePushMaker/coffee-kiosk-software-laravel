@@ -53,7 +53,7 @@ class AuthController extends Controller
     {
         // identificamos el usuario mediante el token
         $user=$request->user();
-        $user->currentAccesToken()->delete();
+        $user->currentAccessToken()->delete();
         
         return response()->noContent();
     }
