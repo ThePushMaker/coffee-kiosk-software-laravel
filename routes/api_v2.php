@@ -20,10 +20,10 @@ Route::middleware('auth:sanctum')->group(function () {
     
     // almacenar ordenes
     Route::apiResource('/pedidos', PedidoController::class);
+    
+    Route::apiResource('/categorias', CategoriaController::class);
+    Route::apiResource('/productos', ProductoController::class);
 });
-
-Route::apiResource('/categorias', CategoriaController::class);
-Route::apiResource('/productos', ProductoController::class);
 
 // autenticación
 Route::post('/registro', [AuthController::class, 'register']);
